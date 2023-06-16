@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
@@ -8,7 +6,6 @@ public class Snake : MonoBehaviour
 
     private void Update()
     { 
-
         if (Input.GetKeyDown(KeyCode.W)){
             _direction = Vector2.up;
         }
@@ -21,6 +18,14 @@ public class Snake : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.D)){
             _direction = Vector2.right;
         }
+    }
 
+    private void FixedUpdate()
+    {
+        this.transform.position = new Vector3(
+            Mathf.Round(this.transform.position.x) + _direction.x,
+            Mathf.Round(this.transform.position.y) + _direction.y,
+            0.0f
+        );
     }
 }
