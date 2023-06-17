@@ -1,30 +1,66 @@
 ﻿using UnityEngine;
 
-public class Snake : MonoBehaviour
-{
-    private Vector2Int _direction = Vector2Int.right;
+public class Snake : MonoBehaviour {
+    [SerializeField] private ControlType controlType;
+    [SerializeField] private float moveInterval;
 
-    private void Update()
-    { 
-        if (Input.GetKeyDown(KeyCode.W)){
-            _direction = Vector2Int.up;
-        }
-        else if (Input.GetKeyDown(KeyCode.S)){
-            _direction = Vector2Int.down;
-        }
-        else if (Input.GetKeyDown(KeyCode.A)){
-            _direction = Vector2Int.left;
-        }
-        else if (Input.GetKeyDown(KeyCode.D)){
-            _direction = Vector2Int.right;
+    private KeyCode upKey;
+    private KeyCode downKey;
+    private KeyCode leftKey;
+    private KeyCode rightKey;
+    private Vector2Int position;
+    private Vector2Int direction = Vector2Int.right;
+    private float moveTimer;
+    private bool canChangeDirection = true;
+
+    private void Start() {
+        position = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
+
+        switch (controlType) {
+            case ControlType.WASD:
+                upKey = KeyCode.W;
+                downKey = KeyCode.S;
+                leftKey = KeyCode.A;
+                rightKey = KeyCode.D;
+                break;
+            case ControlType.ArrowKeys:
+                upKey = KeyCode.UpArrow;
+                downKey = KeyCode.DownArrow;
+                leftKey = KeyCode.LeftArrow;
+                rightKey = KeyCode.RightArrow;
+                break;
         }
     }
 
-    private void FixedUpdate()
-    {
-        transform.position = new Vector3(Mathf.Round(transform.position.x) + _direction.x, Mathf.Round(transform.position.y) + _direction.y);
+    private void Update() { 
+        if (canChangeDirection) {
+            if (Input.GetKeyDown(upKey) && direction != Vector2Int.down) {
+                direction = Vector2Int.up;
+                canChangeDirection = false;
+            } else if (Input.GetKeyDown(downKey) && direction != Vector2Int.up) {
+                direction = Vector2Int.down;
+                canChangeDirection = false;
+            } else if (Input.GetKeyDown(leftKey) && direction != Vector2Int.right) {
+                direction = Vector2Int.left;
+                canChangeDirection = false;
+            } else if (Input.GetKeyDown(rightKey) && direction != Vector2Int.left) {
+                direction = Vector2Int.right;
+                canChangeDirection = false;
+            }
+        }
+
+        moveTimer += Time.deltaTime;
+
+        if (moveTimer >= moveInterval) {
+            moveTimer -= moveInterval;
+            position += direction;
+            transform.position = new Vector3(position.x, position.y);
+            canChangeDirection = true;
+        }
     }
+}
 
-
-
+public enum ControlType {
+    WASD,
+    ArrowKeys
 }
