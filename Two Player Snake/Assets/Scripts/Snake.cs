@@ -1,6 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Snake : MonoBehaviour {
+    [SerializeField] private BodySegment bodySegment;
     [SerializeField] private ControlType controlType;
     [SerializeField] private float moveInterval;
     [SerializeField] private Vector2Int initialDirection;
@@ -10,16 +12,17 @@ public class Snake : MonoBehaviour {
     private KeyCode downKey;
     private KeyCode leftKey;
     private KeyCode rightKey;
-    private Vector2Int position;
     private Vector2Int direction;
     private float moveTimer;
     private bool canChangeDirection = true;
 
     //body
+    private readonly List<BodySegment> body = new List<BodySegment>();
+    private int segmentsLeftToGrow;
 
     private void Start() {
         direction = initialDirection;
-        position = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
+        Grow(20);
 
         switch (controlType) {
             case ControlType.WASD:
@@ -58,14 +61,28 @@ public class Snake : MonoBehaviour {
 
         if (moveTimer >= moveInterval) {
             moveTimer -= moveInterval;
-            position += direction;
-            transform.position = new Vector3(position.x, position.y);
+            Vector3 oldHeadPosition = transform.position;
+            transform.position += new Vector3(direction.x, direction.y);
             canChangeDirection = true;
+
+            if (segmentsLeftToGrow > 0) {
+                segmentsLeftToGrow--;
+                BodySegment newSegment = Instantiate(bodySegment, new Vector3(oldHeadPosition.x, oldHeadPosition.y), Quaternion.identity);
+                body.Insert(0, newSegment);
+            } else {
+                Vector3 oldPosition = oldHeadPosition;
+
+                foreach (BodySegment bodySegment in body) {
+                    Vector3 olderPosition = bodySegment.transform.position;
+                    bodySegment.transform.position = oldPosition;
+                    oldPosition = olderPosition;
+                }
+            }
         }
     }
 
     public void Grow(int growAmount) {
-
+        segmentsLeftToGrow += growAmount;
     }
 }
 

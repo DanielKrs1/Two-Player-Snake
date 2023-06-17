@@ -14,6 +14,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5392253634089983789, guid: 4b8666c9ccde6ff4599923523ca0af5a,
         type: 3}
+      propertyPath: bodySegment
+      value: 
+      objectReference: {fileID: 4810943265831960366, guid: 02caa60d940f5804692da4897027f1e1,
+        type: 3}
+    - target: {fileID: 5392253634089983789, guid: 4b8666c9ccde6ff4599923523ca0af5a,
+        type: 3}
       propertyPath: initialDirection.x
       value: 1
       objectReference: {fileID: 0}
