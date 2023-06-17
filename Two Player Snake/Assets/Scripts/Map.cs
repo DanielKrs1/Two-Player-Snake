@@ -3,6 +3,7 @@
 public class Map : MonoBehaviour {
     public GameObject redSnake;
     public GameObject blueSnake;
+    public GameObject gameCanvas;
 
     public Vector2Int size;
     public Vector2Int redSnakeSpawn;
@@ -15,6 +16,7 @@ public class Map : MonoBehaviour {
 
         Instantiate(redSnake, new Vector3(redSnakeSpawn.x, redSnakeSpawn.y), Quaternion.identity);
         Instantiate(blueSnake, new Vector3(blueSnakeSpawn.x, blueSnakeSpawn.y), Quaternion.identity);
+        Instantiate(gameCanvas);
     }
 
     private void OnDrawGizmos() {
