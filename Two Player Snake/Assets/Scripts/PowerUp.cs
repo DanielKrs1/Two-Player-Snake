@@ -3,7 +3,14 @@ using UnityEngine;
 public abstract class PowerUp : MonoBehaviour {
     public GameObject prefab;
 
-    public abstract void OnCollisionEnter(Collision collision);
+    private void OnCollisionEnter(Collision collision) {
+        if (collision.gameObject.TryGetComponent(out Snake snake)) {
+            OnCollect(snake);
+            Destroy(gameObject);
+        }
+    }
+
+    public abstract void OnCollect(Snake snake);
 
     public static void SpawnNewPowerUp() {
         Vector2 spawnPosition = Map.instance.GetRandomPosition();

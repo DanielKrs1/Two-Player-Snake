@@ -5,6 +5,7 @@ public class Snake : MonoBehaviour {
     [SerializeField] private float moveInterval;
     [SerializeField] private Vector2Int initialDirection;
 
+    //movement
     private KeyCode upKey;
     private KeyCode downKey;
     private KeyCode leftKey;
@@ -13,6 +14,8 @@ public class Snake : MonoBehaviour {
     private Vector2Int direction;
     private float moveTimer;
     private bool canChangeDirection = true;
+
+    //body
 
     private void Start() {
         direction = initialDirection;
@@ -59,6 +62,10 @@ public class Snake : MonoBehaviour {
             transform.position = new Vector3(position.x, position.y);
             canChangeDirection = true;
         }
+    }
+
+    public void Grow(int growAmount) {
+
     }
 }
 
