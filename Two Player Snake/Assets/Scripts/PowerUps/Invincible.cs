@@ -3,13 +3,15 @@ using System.Collections;
 
 public class Invincible : PowerUp {
 
+    private Snake snake;
+
     public override void OnCollect(Snake snake) {
-        StartCoroutine(powerUp(snake));
+        snake.SetInvincible();
+        this.snake = snake;
+        Invoke(nameof(PowerUp), 3);
     }
 
-    IEnumerator powerUp(Snake snake){
-        snake.SetInvincible();
-        yield return new WaitForSeconds(3);
+    public void PowerUp(){
         snake.SetInvincible();
     }
 }

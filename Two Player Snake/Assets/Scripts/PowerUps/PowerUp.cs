@@ -4,7 +4,6 @@ public abstract class PowerUp : MonoBehaviour {
     public GameObject prefab;
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        // Debug.Log("here");
         if (collision.gameObject.TryGetComponent(out Snake snake)) {
             OnCollect(snake);
             Map.instance.powerUpCount-=1;

@@ -19,6 +19,8 @@ public class Snake : MonoBehaviour {
     private bool canChangeDirection = true;
 
     private bool invincible = false;
+    private bool reversed = false;
+    private bool frozen = false;
 
     //body
     private readonly List<BodySegment> body = new List<BodySegment>();
@@ -63,7 +65,7 @@ public class Snake : MonoBehaviour {
 
         moveTimer += Time.deltaTime;
 
-        if (moveTimer >= moveInterval/speed) {
+        if (moveTimer >= moveInterval/speed&&!frozen) {
             moveTimer -= moveInterval/speed;
             Vector3 oldHeadPosition = transform.position;
             transform.position += new Vector3(direction.x, direction.y);
@@ -89,6 +91,21 @@ public class Snake : MonoBehaviour {
         segmentsLeftToGrow += growAmount;
     }
 
+    public void Teleport(){
+        Vector2 teleportLocation = Map.instance.GetRandomPosition();
+
+        while (Physics2D.OverlapPoint(teleportLocation) != null) {
+            teleportLocation = Map.instance.GetRandomPosition();
+        }
+
+        transform.position = new Vector3(teleportLocation.x, teleportLocation.y);
+    }
+
+    public void Freeze(){
+        Debug.Log("froze");
+        frozen = !frozen;
+    }
+
     public void SpeedIncrease(float speed){
         this.speed += speed;
     }
@@ -98,7 +115,8 @@ public class Snake : MonoBehaviour {
     }
 
     public void reverseControls(){
-        if(upKey ==KeyCode.W || upKey == KeyCode.UpArrow){
+        if(!reversed){
+            reversed = true;
             switch (controlType) {
                 case ControlType.WASD:
                     upKey = KeyCode.S;
@@ -114,6 +132,7 @@ public class Snake : MonoBehaviour {
                     return;
             }
         }else{
+            reversed = false;
             switch (controlType) {
                 case ControlType.WASD:
                     upKey = KeyCode.W;

@@ -33,10 +33,11 @@ public class Map : MonoBehaviour {
         Instantiate(redSnake, new Vector3(redSnakeSpawn.x, redSnakeSpawn.y), Quaternion.identity);
         Instantiate(blueSnake, new Vector3(blueSnakeSpawn.x, blueSnakeSpawn.y), Quaternion.identity);
         Instantiate(gameCanvas);
+        app.SpawnNewPowerUp();
     }
 
     private void FixedUpdate(){
-        if(Random.Range(0, spawnChance)==0){
+        if(Random.Range(0, spawnChance)==0&&powerUpCount<10){
             powerUps[Random.Range(0, powerUps.Length-1)].SpawnNewPowerUp();
         }
     }
