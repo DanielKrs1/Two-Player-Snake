@@ -16,8 +16,11 @@ public class Map : MonoBehaviour {
     }
 
     private void Start() {
+       
         GameObject newTile = Instantiate(Resources.Load("Square") as GameObject, new Vector3(0, 0), Quaternion.identity);
-        newTile.transform.localScale = new Vector3(size.x, size.y, 1);
+        SpriteRenderer sp1 = newTile.GetComponent<SpriteRenderer>() as SpriteRenderer;
+        sp1.size = new Vector2(size.x, size.y);
+        //newTile.transform.localScale = new Vector3(size.x, size.y, 1);
         Camera.main.orthographicSize = newTile.transform.localScale.y / 2 + 1;
 
         Instantiate(redSnake, new Vector3(redSnakeSpawn.x, redSnakeSpawn.y), Quaternion.identity);
