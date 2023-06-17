@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 
 public class Map : MonoBehaviour {
+    public static Map instance;
+
     public GameObject redSnake;
     public GameObject blueSnake;
     public GameObject gameCanvas;
@@ -8,6 +10,10 @@ public class Map : MonoBehaviour {
     public Vector2Int size;
     public Vector2Int redSnakeSpawn;
     public Vector2Int blueSnakeSpawn;
+
+    private void Awake() {
+        instance = this;
+    }
 
     private void Start() {
         GameObject newTile = Instantiate(Resources.Load("Square") as GameObject, new Vector3(0, 0), Quaternion.identity);
@@ -28,5 +34,11 @@ public class Map : MonoBehaviour {
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(new Vector3(blueSnakeSpawn.x, blueSnakeSpawn.y), 0.5f);
+    }
+
+    public Vector2Int GetRandomPosition() {
+        int width = (size.x - 1) / 2;
+        int height = (size.y - 1) / 2;
+        return new Vector2Int(Random.Range(-width, width + 1), Random.Range(-height, height + 1));
     }
 }
