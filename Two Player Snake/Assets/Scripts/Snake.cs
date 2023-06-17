@@ -22,7 +22,7 @@ public class Snake : MonoBehaviour {
 
     private void Start() {
         direction = initialDirection;
-        Grow(20);
+        Grow(5);
 
         switch (controlType) {
             case ControlType.WASD:
