@@ -14,6 +14,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5392253634089983789, guid: 4b8666c9ccde6ff4599923523ca0af5a,
         type: 3}
+      propertyPath: bodySegment
+      value: 
+      objectReference: {fileID: 2825264842276446658, guid: f677f120d69fb2e4bb7a0ea5463386c2,
+        type: 3}
+    - target: {fileID: 5392253634089983789, guid: 4b8666c9ccde6ff4599923523ca0af5a,
+        type: 3}
       propertyPath: controlType
       value: 1
       objectReference: {fileID: 0}
