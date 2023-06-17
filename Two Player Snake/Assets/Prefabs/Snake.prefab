@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodySegment: {fileID: 0}
   controlType: 0
-  initialBodyLength: 300
+  initialBodyLength: 10
   moveInterval: 0.05
   initialDirection: {x: 0, y: 0}
 --- !u!50 &-3462971447885460700
