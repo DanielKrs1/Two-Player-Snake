@@ -13,9 +13,12 @@ public class Snake : MonoBehaviour {
     private KeyCode downKey;
     private KeyCode leftKey;
     private KeyCode rightKey;
+    private float speed = 1;
     private Vector2Int direction;
     private float moveTimer;
     private bool canChangeDirection = true;
+
+    private bool invincible = false;
 
     //body
     private readonly List<BodySegment> body = new List<BodySegment>();
@@ -60,8 +63,8 @@ public class Snake : MonoBehaviour {
 
         moveTimer += Time.deltaTime;
 
-        if (moveTimer >= moveInterval) {
-            moveTimer -= moveInterval;
+        if (moveTimer >= moveInterval/speed) {
+            moveTimer -= moveInterval/speed;
             Vector3 oldHeadPosition = transform.position;
             transform.position += new Vector3(direction.x, direction.y);
             canChangeDirection = true;
@@ -84,6 +87,48 @@ public class Snake : MonoBehaviour {
 
     public void Grow(int growAmount) {
         segmentsLeftToGrow += growAmount;
+    }
+
+    public void SpeedIncrease(float speed){
+        this.speed += speed;
+    }
+
+    public void SetInvincible(){
+        invincible = !invincible;
+    }
+
+    public void reverseControls(){
+        if(upKey ==KeyCode.W || upKey == KeyCode.UpArrow){
+            switch (controlType) {
+                case ControlType.WASD:
+                    upKey = KeyCode.S;
+                    downKey = KeyCode.W;
+                    leftKey = KeyCode.D;
+                    rightKey = KeyCode.A;
+                    return;
+                case ControlType.ArrowKeys:
+                    upKey = KeyCode.DownArrow;
+                    downKey = KeyCode.UpArrow;
+                    leftKey = KeyCode.RightArrow;
+                    rightKey = KeyCode.LeftArrow;
+                    return;
+            }
+        }else{
+            switch (controlType) {
+                case ControlType.WASD:
+                    upKey = KeyCode.W;
+                    downKey = KeyCode.S;
+                    leftKey = KeyCode.A;
+                    rightKey = KeyCode.D;
+                    return;
+                case ControlType.ArrowKeys:
+                    upKey = KeyCode.UpArrow;
+                    downKey = KeyCode.DownArrow;
+                    leftKey = KeyCode.LeftArrow;
+                    rightKey = KeyCode.RightArrow;
+                    return;
+            }
+        }
     }
 }
 

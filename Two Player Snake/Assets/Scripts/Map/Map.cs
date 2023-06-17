@@ -9,6 +9,11 @@ public class Map : MonoBehaviour {
     public Apple app;
     public Canvas gameCanvas;
 
+    public PowerUp[] powerUps;
+    public int powerUpCount;
+    public int maxPowerUps;
+    public int spawnChance = 500;
+
     public Vector2Int size;
     public Vector2Int redSnakeSpawn;
     public Vector2Int blueSnakeSpawn;
@@ -28,6 +33,12 @@ public class Map : MonoBehaviour {
         Instantiate(redSnake, new Vector3(redSnakeSpawn.x, redSnakeSpawn.y), Quaternion.identity);
         Instantiate(blueSnake, new Vector3(blueSnakeSpawn.x, blueSnakeSpawn.y), Quaternion.identity);
         Instantiate(gameCanvas);
+    }
+
+    private void FixedUpdate(){
+        if(Random.Range(0, spawnChance)==0){
+            powerUps[Random.Range(0, powerUps.Length-1)].SpawnNewPowerUp();
+        }
     }
 
     private void OnDrawGizmos() {

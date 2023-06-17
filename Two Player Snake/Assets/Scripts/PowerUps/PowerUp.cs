@@ -4,9 +4,10 @@ public abstract class PowerUp : MonoBehaviour {
     public GameObject prefab;
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        Debug.Log("here");
+        // Debug.Log("here");
         if (collision.gameObject.TryGetComponent(out Snake snake)) {
             OnCollect(snake);
+            Map.instance.powerUpCount-=1;
             Destroy(gameObject);
         }
     }
@@ -15,6 +16,7 @@ public abstract class PowerUp : MonoBehaviour {
 
     public void SpawnNewPowerUp() {
         Vector2 spawnPosition = Map.instance.GetRandomPosition();
+        Map.instance.powerUpCount+=1;
 
         while (Physics2D.OverlapPoint(spawnPosition) != null) {
             spawnPosition = Map.instance.GetRandomPosition();
