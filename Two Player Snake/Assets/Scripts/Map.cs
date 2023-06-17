@@ -6,6 +6,7 @@ public class Map : MonoBehaviour {
     public new Camera camera;
     public Snake redSnake;
     public Snake blueSnake;
+    public Apple app;
     public Canvas gameCanvas;
 
     public Vector2Int size;
@@ -26,6 +27,7 @@ public class Map : MonoBehaviour {
         Instantiate(redSnake, new Vector3(redSnakeSpawn.x, redSnakeSpawn.y), Quaternion.identity);
         Instantiate(blueSnake, new Vector3(blueSnakeSpawn.x, blueSnakeSpawn.y), Quaternion.identity);
         Instantiate(gameCanvas);
+        app.SpawnNewPowerUp();
     }
 
     private void OnDrawGizmos() {
