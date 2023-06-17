@@ -98,7 +98,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodySegment: {fileID: 0}
   controlType: 0
-  moveInterval: 0.1
+  initialBodyLength: 300
+  moveInterval: 0.05
   initialDirection: {x: 0, y: 0}
 --- !u!50 &-3462971447885460700
 Rigidbody2D:

@@ -4,6 +4,7 @@ using UnityEngine;
 public class Snake : MonoBehaviour {
     [SerializeField] private BodySegment bodySegment;
     [SerializeField] private ControlType controlType;
+    [SerializeField] private int initialBodyLength;
     [SerializeField] private float moveInterval;
     [SerializeField] private Vector2Int initialDirection;
 
@@ -22,7 +23,7 @@ public class Snake : MonoBehaviour {
 
     private void Start() {
         direction = initialDirection;
-        Grow(20);
+        Grow(initialBodyLength);
 
         switch (controlType) {
             case ControlType.WASD:

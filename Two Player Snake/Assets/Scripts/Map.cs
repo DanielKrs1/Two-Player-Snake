@@ -3,9 +3,10 @@
 public class Map : MonoBehaviour {
     public static Map instance;
 
-    public GameObject redSnake;
-    public GameObject blueSnake;
-    public GameObject gameCanvas;
+    public new Camera camera;
+    public Snake redSnake;
+    public Snake blueSnake;
+    public Canvas gameCanvas;
 
     public Vector2Int size;
     public Vector2Int redSnakeSpawn;
@@ -15,13 +16,12 @@ public class Map : MonoBehaviour {
         instance = this;
     }
 
-    private void Start() {
-       
+    private void Start() {       
+        Camera mainCamera = Instantiate(camera);
         GameObject newTile = Instantiate(Resources.Load("Square") as GameObject, new Vector3(0, 0), Quaternion.identity);
         SpriteRenderer sp1 = newTile.GetComponent<SpriteRenderer>() as SpriteRenderer;
         sp1.size = new Vector2(size.x, size.y);
-        //newTile.transform.localScale = new Vector3(size.x, size.y, 1);
-        Camera.main.orthographicSize = newTile.transform.localScale.y / 2 + 1;
+        mainCamera.orthographicSize = newTile.transform.localScale.y / 2 + 1;
 
         Instantiate(redSnake, new Vector3(redSnakeSpawn.x, redSnakeSpawn.y), Quaternion.identity);
         Instantiate(blueSnake, new Vector3(blueSnakeSpawn.x, blueSnakeSpawn.y), Quaternion.identity);
