@@ -2,32 +2,27 @@
 
 public class Snake : MonoBehaviour
 {
-    private Vector2int _direction = Vector2int.right;
+    private Vector2Int _direction = Vector2Int.right;
 
     private void Update()
     { 
         if (Input.GetKeyDown(KeyCode.W)){
-            _direction = Vector2int.up;
+            _direction = Vector2Int.up;
         }
         else if (Input.GetKeyDown(KeyCode.S)){
-            _direction = Vector2int.down;
+            _direction = Vector2Int.down;
         }
         else if (Input.GetKeyDown(KeyCode.A)){
-            _direction = Vector2int.left;
+            _direction = Vector2Int.left;
         }
         else if (Input.GetKeyDown(KeyCode.D)){
-            _direction = Vector2int.right;
+            _direction = Vector2Int.right;
         }
     }
 
     private void FixedUpdate()
     {
-        this.transform.position = new Vector3int(
-            Mathf.Round(this.transform.position.x) + _direction.x,
-            Mathf.Round(this.transform.position.y) + _direction.y,
-
-            0.0f
-        );
+        transform.position = new Vector3(Mathf.Round(transform.position.x) + _direction.x, Mathf.Round(transform.position.y) + _direction.y);
     }
 
 
