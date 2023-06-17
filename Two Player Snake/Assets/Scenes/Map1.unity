@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &411950202
 RectTransform:
   m_ObjectHideFlags: 0
@@ -325,8 +325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1a81e726bb54938853d5eebcab5521, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 64
-  height: 64
+  size: {x: 64, y: 64}
+  player1Spawn: {x: -30, y: 0}
+  player2Spawn: {x: 30, y: 0}
 --- !u!4 &532824485
 Transform:
   m_ObjectHideFlags: 0
