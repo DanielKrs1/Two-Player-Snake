@@ -5,5 +5,6 @@ public class Apple : PowerUp {
 
     public override void OnCollect(Snake snake) {
         snake.Grow(growAmonut);
+        SpawnNewPowerUp();   
     }
 }
