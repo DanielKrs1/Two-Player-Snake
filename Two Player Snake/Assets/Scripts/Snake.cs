@@ -3,17 +3,19 @@
 public class Snake : MonoBehaviour {
     [SerializeField] private ControlType controlType;
     [SerializeField] private float moveInterval;
+    [SerializeField] private Vector2Int initialDirection;
 
     private KeyCode upKey;
     private KeyCode downKey;
     private KeyCode leftKey;
     private KeyCode rightKey;
     private Vector2Int position;
-    private Vector2Int direction = Vector2Int.right;
+    private Vector2Int direction;
     private float moveTimer;
     private bool canChangeDirection = true;
 
     private void Start() {
+        direction = initialDirection;
         position = new Vector2Int(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
 
         switch (controlType) {
