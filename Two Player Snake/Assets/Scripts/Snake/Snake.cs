@@ -13,12 +13,16 @@ public class Snake : MonoBehaviour {
     //movement
     private Queue<KeyCode> keyBuffer = new Queue<KeyCode>();
     private KeyCode upKey;
+    private SpriteRenderer spriteRenderer;
     private KeyCode downKey;
     private KeyCode leftKey;
     private KeyCode rightKey;
     private float speed = 1;
     private Vector2Int direction;
     private float moveTimer;
+    private bool canChangeDirection = true;
+    private Color normalColor;
+    private Color currentColor;
 
     private bool invincible = false;
     private bool frozen = false;
@@ -30,6 +34,10 @@ public class Snake : MonoBehaviour {
     private void Start() {
         direction = initialDirection;
         Grow(initialBodyLength);
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        normalColor = spriteRenderer.color;
+        currentColor = normalColor;
 
         switch (controlType) {
             case ControlType.WASD:
@@ -89,6 +97,8 @@ public class Snake : MonoBehaviour {
 
             Vector3 oldHeadPosition = transform.position;
             transform.position += new Vector3(direction.x, direction.y);
+            canChangeDirection = true;
+            spriteRenderer.color = currentColor;
 
             if (segmentsLeftToGrow > 0) {
                 segmentsLeftToGrow--;
@@ -98,6 +108,7 @@ public class Snake : MonoBehaviour {
                 Vector3 oldPosition = oldHeadPosition;
 
                 foreach (BodySegment bodySegment in body) {
+                    bodySegment.gameObject.GetComponent<SpriteRenderer>().color = currentColor;
                     Vector3 olderPosition = bodySegment.transform.position;
                     bodySegment.transform.position = oldPosition;
                     oldPosition = olderPosition;
