@@ -12,10 +12,8 @@ public class Freeze : PowerUp {
         blue = GameObject.FindWithTag("BlueSnake").GetComponent<Snake>();
         this.snake = snake;
         if(snake.gameObject.name == "Red Snake(Clone)"){
-            Debug.Log("red");
             blue.Freeze();
         }else{
-            Debug.Log("blue");
             red.Freeze();
         }
     }

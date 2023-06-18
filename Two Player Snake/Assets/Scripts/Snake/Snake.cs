@@ -113,7 +113,6 @@ public class Snake : MonoBehaviour {
     }
 
     public void Freeze(){
-        Debug.Log("froze");
         frozen = true;
         StartCoroutine(UnFreeze());
     }
@@ -143,13 +142,13 @@ public class Snake : MonoBehaviour {
                 downKey = KeyCode.W;
                 leftKey = KeyCode.D;
                 rightKey = KeyCode.A;
-                return;
+                break;
             case ControlType.ArrowKeys:
                 upKey = KeyCode.DownArrow;
                 downKey = KeyCode.UpArrow;
                 leftKey = KeyCode.RightArrow;
                 rightKey = KeyCode.LeftArrow;
-                return;
+                break;
         }
         StartCoroutine(unReverse());
     }
