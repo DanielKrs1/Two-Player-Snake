@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &242074970470723865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 242074970470723871}
+  - component: {fileID: 242074970470723870}
+  m_Layer: 0
+  m_Name: Map
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &242074970470723871
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242074970470723865}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &242074970470723870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 242074970470723865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf1a81e726bb54938853d5eebcab5521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 7229293994131310221, guid: be16a922d1b7fa74fb8bc2e1a2f16471, type: 3}
+  redSnake: {fileID: 3129073565794365801, guid: 1fac91f81b7cb0a41952fc8a767fe09b,
+    type: 3}
+  blueSnake: {fileID: 6242972927931669190, guid: 33797783a77d03a46a5c8a0b6fab6a73,
+    type: 3}
+  app: {fileID: 748294723222449550, guid: 432608f8d47ad6f4c95db13918e3465f, type: 3}
+  gameCanvas: {fileID: 5753316432034305641, guid: 9c9346ca15f1f254792eaf7ccffd9db6,
+    type: 3}
+  powerUps:
+  - {fileID: 7598496047794381727, guid: 79deba5c7ec5a7943b530ac9388090fc, type: 3}
+  - {fileID: 7039316920445913500, guid: 04e19df8789d60143b72ea93af6206f3, type: 3}
+  - {fileID: 8434234266430844902, guid: 2340e4325d32fd947a57f2c824af2508, type: 3}
+  - {fileID: 2610032683859688917, guid: 5b621a9d3beec0940be8713614546686, type: 3}
+  - {fileID: 1171579944344492308, guid: 011cfc24c8a902e42a5ff1b6af7284a4, type: 3}
+  powerUpCount: 0
+  maxPowerUps: 5
+  spawnChance: 100
+  size: {x: 21, y: 21}
+  redSnakeSpawn: {x: -10, y: -10}
+  blueSnakeSpawn: {x: 10, y: 10}
