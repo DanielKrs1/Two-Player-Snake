@@ -20,7 +20,6 @@ public class Snake : MonoBehaviour {
     private bool canChangeDirection = true;
 
     private bool invincible = false;
-    private bool reversed = false;
     private bool frozen = false;
 
     //body
@@ -91,9 +90,9 @@ public class Snake : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.GetComponent<BodySegment>()) {
+        if (collision.GetComponent<BodySegment>()&&!invincible) {
             EndScreen.instance.GameOver(this);
-        } else if (collision.GetComponent<Snake>()) {
+        } else if (collision.GetComponent<Snake>()&&!invincible) {
             EndScreen.instance.GameOver(null);
         }
     }
@@ -128,6 +127,7 @@ public class Snake : MonoBehaviour {
 
     public void SetInvincible(){
         invincible = true;
+        StartCoroutine(StopInvincible());
     }
 
     public IEnumerator StopInvincible(){
