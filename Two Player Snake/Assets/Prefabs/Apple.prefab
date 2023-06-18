@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 748294723222449546}
-  growAmount: 5
+  growAmount: 3
 --- !u!50 &748294723222449551
 Rigidbody2D:
   serializedVersion: 4

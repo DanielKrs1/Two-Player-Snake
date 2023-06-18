@@ -37,7 +37,7 @@ public class Map : MonoBehaviour {
     }
 
     private void FixedUpdate(){
-        if(Random.Range(0, spawnChance)==0&&powerUpCount<10){
+        if(Random.Range(0, spawnChance) == 0 && powerUpCount < maxPowerUps){
             powerUps[Random.Range(0, powerUps.Length)].SpawnNewPowerUp();
         }
     }

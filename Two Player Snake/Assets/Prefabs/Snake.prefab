@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodySegment: {fileID: 0}
   controlType: 0
-  initialBodyLength: 5
+  initialBodyLength: 2
   moveInterval: 0.1
   initialDirection: {x: 0, y: 0}
   keyBufferCapacity: 2

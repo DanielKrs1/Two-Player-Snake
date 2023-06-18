@@ -20,7 +20,6 @@ public class Snake : MonoBehaviour {
     private float speed = 1;
     private Vector2Int direction;
     private float moveTimer;
-    private bool canChangeDirection = true;
     private Color normalColor;
     private Color currentColor;
 
@@ -97,7 +96,6 @@ public class Snake : MonoBehaviour {
 
             Vector3 oldHeadPosition = transform.position;
             transform.position += new Vector3(direction.x, direction.y);
-            canChangeDirection = true;
             spriteRenderer.color = currentColor;
 
             if (segmentsLeftToGrow > 0) {
@@ -154,7 +152,7 @@ public class Snake : MonoBehaviour {
     }
 
     public IEnumerator UnFreeze(){
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(1.5f);
         frozen = false;
     }
 
@@ -168,7 +166,7 @@ public class Snake : MonoBehaviour {
     }
 
     public IEnumerator StopInvincible(){
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(4.0f);
         invincible = false;
     }
 
@@ -189,10 +187,10 @@ public class Snake : MonoBehaviour {
                 rightKey = KeyCode.LeftArrow;
                 break;
         }
-        StartCoroutine(unReverse());
+        StartCoroutine(UnReverse());
     }
 
-    public IEnumerator unReverse(){
+    public IEnumerator UnReverse(){
         yield return new WaitForSeconds(3.0f);
         switch (controlType) {
             case ControlType.WASD:
