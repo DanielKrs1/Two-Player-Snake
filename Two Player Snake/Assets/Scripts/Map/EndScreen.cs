@@ -1,19 +1,37 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using TMPro;
 
 public class EndScreen : MonoBehaviour {
     public static EndScreen instance;
     
+    [SerializeField] private GameObject endScreen;
     [SerializeField] private TextMeshProUGUI winnerText;
+
+    private List<Snake> deadSnakes = new List<Snake>();
 
     private void Awake() {
         instance = this;
-        gameObject.SetActive(false);
+        endScreen.SetActive(false);
     }
 
+
     public void GameOver(Snake loser) {
-        winnerText.text = loser.gameObject.name + " lost!";
-        gameObject.SetActive(true);
+        deadSnakes.Add(loser);
+    }
+
+    private void LateUpdate() {
+        if (deadSnakes.Count == 0)
+            return;
+
+        if (deadSnakes.Count == 1) {
+            winnerText.text = deadSnakes[0].gameObject.name + " lost!";
+        } else {
+            winnerText.text = "Tie";
+        }
+
+        endScreen.SetActive(true);
         Time.timeScale = 0f;
+        enabled = false;
     }
 }

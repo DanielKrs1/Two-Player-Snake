@@ -166,9 +166,9 @@ MonoBehaviour:
   - {fileID: 1171579944344492308, guid: 011cfc24c8a902e42a5ff1b6af7284a4, type: 3}
   powerUpCount: 0
   maxPowerUps: 0
-  spawnChance: 500
+  spawnChance: 100
   size: {x: 63, y: 63}
-  redSnakeSpawn: {x: -30, y: 0}
+  redSnakeSpawn: {x: -31, y: 0}
   blueSnakeSpawn: {x: 30, y: 0}
 --- !u!4 &532824485
 Transform:

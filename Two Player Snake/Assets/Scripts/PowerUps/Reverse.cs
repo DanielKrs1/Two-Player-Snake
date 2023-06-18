@@ -12,21 +12,21 @@ public class Reverse : PowerUp {
         this.snake = snake;
         if(Random.Range(0, 99)>24){
             if(snake.Equals(red)){
-                blue.reverseControls();
+                blue.ReverseControls();
                 snake = blue;
                 Invoke(nameof(PowerUp), 3);
             }else{
-                red.reverseControls();
+                red.ReverseControls();
                 snake = red;
                 Invoke(nameof(PowerUp), 3);
             }
         }else{
-            snake.reverseControls();
+            snake.ReverseControls();
             Invoke(nameof(PowerUp), 3);
         }
     }
 
     public void PowerUp(){
-        snake.reverseControls();
+        snake.ReverseControls();
     }
 }
