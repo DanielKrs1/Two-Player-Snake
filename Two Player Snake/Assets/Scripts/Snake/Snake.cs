@@ -148,25 +148,48 @@ public class Snake : MonoBehaviour {
 
     public void Freeze(){
         frozen = true;
+        currentColor.b+=0.75f;
+        currentColor.g+=0.75f;
+        spriteRenderer.color = currentColor;
+        foreach (BodySegment bodySegment in body) {
+            bodySegment.gameObject.GetComponent<SpriteRenderer>().color = currentColor;
+        }
         StartCoroutine(UnFreeze());
     }
 
     public IEnumerator UnFreeze(){
         yield return new WaitForSeconds(1.5f);
+        currentColor.b-=0.75f;
+        currentColor.g-=0.75f;
         frozen = false;
     }
 
     public void SpeedIncrease(float speed){
         this.speed += speed;
+        currentColor.r+=0.75f;
+        currentColor.b+=0.75f;
+        currentColor.g+=0.75f;
+        StartCoroutine(Flash());
+    }
+
+    public IEnumerator Flash(){
+        yield return new WaitForSeconds(0.1f);
+        currentColor.r-=0.75f;
+        currentColor.b-=0.75f;
+        currentColor.g-=0.75f;        
     }
 
     public void SetInvincible(){
         invincible = true;
+        currentColor.g+=0.45f;
+        currentColor.r+=0.45f;
         StartCoroutine(StopInvincible());
     }
 
     public IEnumerator StopInvincible(){
         yield return new WaitForSeconds(4.0f);
+        currentColor.g-=0.45f;
+        currentColor.r-=0.45f;
         invincible = false;
     }
 
@@ -186,12 +209,16 @@ public class Snake : MonoBehaviour {
                 leftKey = KeyCode.RightArrow;
                 rightKey = KeyCode.LeftArrow;
                 break;
-        }
+        }        
+        currentColor.g+=0.6f;
+        currentColor.r+=0.75f;
         StartCoroutine(UnReverse());
     }
 
     public IEnumerator UnReverse(){
         yield return new WaitForSeconds(3.0f);
+        currentColor.g-=0.6f;
+        currentColor.r-=0.75f;
         switch (controlType) {
             case ControlType.WASD:
                 upKey = KeyCode.W;

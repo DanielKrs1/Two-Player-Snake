@@ -165,8 +165,8 @@ MonoBehaviour:
   - {fileID: 2610032683859688917, guid: 5b621a9d3beec0940be8713614546686, type: 3}
   - {fileID: 1171579944344492308, guid: 011cfc24c8a902e42a5ff1b6af7284a4, type: 3}
   powerUpCount: 0
-  maxPowerUps: 0
-  spawnChance: 0
+  maxPowerUps: 12
+  spawnChance: 500
   size: {x: 63, y: 63}
   redSnakeSpawn: {x: -25, y: -25}
   blueSnakeSpawn: {x: 25, y: 25}
