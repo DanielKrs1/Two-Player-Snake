@@ -53,13 +53,28 @@ MonoBehaviour:
     type: 3}
   powerUps:
   - {fileID: 7598496047794381727, guid: 79deba5c7ec5a7943b530ac9388090fc, type: 3}
-  - {fileID: 7039316920445913500, guid: 04e19df8789d60143b72ea93af6206f3, type: 3}
+  - {fileID: 7598496047794381727, guid: 79deba5c7ec5a7943b530ac9388090fc, type: 3}
+  - {fileID: 7598496047794381727, guid: 79deba5c7ec5a7943b530ac9388090fc, type: 3}
+  - {fileID: 7598496047794381727, guid: 79deba5c7ec5a7943b530ac9388090fc, type: 3}
+  - {fileID: 7598496047794381727, guid: 79deba5c7ec5a7943b530ac9388090fc, type: 3}
+  - {fileID: 7598496047794381727, guid: 79deba5c7ec5a7943b530ac9388090fc, type: 3}
+  - {fileID: 8434234266430844902, guid: 2340e4325d32fd947a57f2c824af2508, type: 3}
+  - {fileID: 8434234266430844902, guid: 2340e4325d32fd947a57f2c824af2508, type: 3}
+  - {fileID: 8434234266430844902, guid: 2340e4325d32fd947a57f2c824af2508, type: 3}
+  - {fileID: 8434234266430844902, guid: 2340e4325d32fd947a57f2c824af2508, type: 3}
   - {fileID: 8434234266430844902, guid: 2340e4325d32fd947a57f2c824af2508, type: 3}
   - {fileID: 2610032683859688917, guid: 5b621a9d3beec0940be8713614546686, type: 3}
+  - {fileID: 2610032683859688917, guid: 5b621a9d3beec0940be8713614546686, type: 3}
+  - {fileID: 2610032683859688917, guid: 5b621a9d3beec0940be8713614546686, type: 3}
+  - {fileID: 2610032683859688917, guid: 5b621a9d3beec0940be8713614546686, type: 3}
+  - {fileID: 7039316920445913500, guid: 04e19df8789d60143b72ea93af6206f3, type: 3}
+  - {fileID: 7039316920445913500, guid: 04e19df8789d60143b72ea93af6206f3, type: 3}
+  - {fileID: 7039316920445913500, guid: 04e19df8789d60143b72ea93af6206f3, type: 3}
+  - {fileID: 1171579944344492308, guid: 011cfc24c8a902e42a5ff1b6af7284a4, type: 3}
   - {fileID: 1171579944344492308, guid: 011cfc24c8a902e42a5ff1b6af7284a4, type: 3}
   powerUpCount: 0
   maxPowerUps: 5
-  spawnChance: 100
+  spawnChance: 50
   size: {x: 21, y: 21}
   redSnakeSpawn: {x: -10, y: -10}
   blueSnakeSpawn: {x: 10, y: 10}
