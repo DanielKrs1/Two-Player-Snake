@@ -11,12 +11,12 @@ public class Reverse : PowerUp {
         this.snake = snake;
         if(Random.Range(0, 99)>24){
             if(snake ==red){
-                blue.reverseControls();
+                blue.ReverseControls();
             }else{
-                red.reverseControls();
+                red.ReverseControls();
             }
         }else{
-            snake.reverseControls();
+            snake.ReverseControls();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
@@ -33,5 +34,13 @@ public class EndScreen : MonoBehaviour {
         endScreen.SetActive(true);
         Time.timeScale = 0f;
         enabled = false;
+    }
+
+    public void Restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void BackTomapSelect() {
+        SceneManager.LoadScene("MapSelector");
     }
 }

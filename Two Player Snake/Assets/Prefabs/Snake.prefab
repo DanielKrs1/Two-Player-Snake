@@ -101,6 +101,7 @@ MonoBehaviour:
   initialBodyLength: 5
   moveInterval: 0.1
   initialDirection: {x: 0, y: 0}
+  keyBufferCapacity: 2
 --- !u!50 &-3462971447885460700
 Rigidbody2D:
   serializedVersion: 4
