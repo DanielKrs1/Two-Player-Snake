@@ -8,25 +8,15 @@ public class Freeze : PowerUp {
     float speed;
 
     public override void OnCollect(Snake snake) {
-        red = Map.instance.redSnake;
-        blue = Map.instance.blueSnake;
+        red = GameObject.FindWithTag("RedSnake").GetComponent<Snake>();
+        blue = GameObject.FindWithTag("BlueSnake").GetComponent<Snake>();
         this.snake = snake;
-        if(snake.Equals(red)){
+        if(snake.gameObject.name == "Red Snake(Clone)"){
             Debug.Log("red");
             blue.Freeze();
-            snake = blue;
-            Invoke(nameof(PowerUp), 3);
         }else{
-            
             Debug.Log("blue");
             red.Freeze();
-            snake = red;
-            Invoke(nameof(PowerUp), 3);
         }
-    }
-
-    void PowerUp(){
-        Debug.Log("here2");
-        snake.Freeze();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class Snake : MonoBehaviour {
     [SerializeField] private BodySegment bodySegment;
@@ -63,7 +64,9 @@ public class Snake : MonoBehaviour {
             }
         }
 
-        moveTimer += Time.deltaTime;
+        if(!frozen){
+            moveTimer += Time.deltaTime;
+        }
 
         if (moveTimer >= moveInterval/speed&&!frozen) {
             moveTimer -= moveInterval/speed;
@@ -103,7 +106,13 @@ public class Snake : MonoBehaviour {
 
     public void Freeze(){
         Debug.Log("froze");
-        frozen = !frozen;
+        frozen = true;
+        StartCoroutine(UnFreeze());
+    }
+
+    public IEnumerator UnFreeze(){
+        yield return new WaitForSeconds(3.0f);
+        frozen = false;
     }
 
     public void SpeedIncrease(float speed){
@@ -111,42 +120,47 @@ public class Snake : MonoBehaviour {
     }
 
     public void SetInvincible(){
-        invincible = !invincible;
+        invincible = true;
+    }
+
+    public IEnumerator StopInvincible(){
+        yield return new WaitForSeconds(3.0f);
+        invincible = false;
     }
 
     public void reverseControls(){
-        if(!reversed){
-            reversed = true;
-            switch (controlType) {
-                case ControlType.WASD:
-                    upKey = KeyCode.S;
-                    downKey = KeyCode.W;
-                    leftKey = KeyCode.D;
-                    rightKey = KeyCode.A;
-                    return;
-                case ControlType.ArrowKeys:
-                    upKey = KeyCode.DownArrow;
-                    downKey = KeyCode.UpArrow;
-                    leftKey = KeyCode.RightArrow;
-                    rightKey = KeyCode.LeftArrow;
-                    return;
-            }
-        }else{
-            reversed = false;
-            switch (controlType) {
-                case ControlType.WASD:
-                    upKey = KeyCode.W;
-                    downKey = KeyCode.S;
-                    leftKey = KeyCode.A;
-                    rightKey = KeyCode.D;
-                    return;
-                case ControlType.ArrowKeys:
-                    upKey = KeyCode.UpArrow;
-                    downKey = KeyCode.DownArrow;
-                    leftKey = KeyCode.LeftArrow;
-                    rightKey = KeyCode.RightArrow;
-                    return;
-            }
+        switch (controlType) {
+            case ControlType.WASD:
+                upKey = KeyCode.S;
+                downKey = KeyCode.W;
+                leftKey = KeyCode.D;
+                rightKey = KeyCode.A;
+                return;
+            case ControlType.ArrowKeys:
+                upKey = KeyCode.DownArrow;
+                downKey = KeyCode.UpArrow;
+                leftKey = KeyCode.RightArrow;
+                rightKey = KeyCode.LeftArrow;
+                return;
+        }
+        StartCoroutine(unReverse());
+    }
+
+    public IEnumerator unReverse(){
+        yield return new WaitForSeconds(3.0f);
+        switch (controlType) {
+            case ControlType.WASD:
+                upKey = KeyCode.W;
+                downKey = KeyCode.S;
+                leftKey = KeyCode.A;
+                rightKey = KeyCode.D;
+                break;
+            case ControlType.ArrowKeys:
+                upKey = KeyCode.UpArrow;
+                downKey = KeyCode.DownArrow;
+                leftKey = KeyCode.LeftArrow;
+                rightKey = KeyCode.RightArrow;
+                break;
         }
     }
 }

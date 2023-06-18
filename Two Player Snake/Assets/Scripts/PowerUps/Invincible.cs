@@ -7,11 +7,6 @@ public class Invincible : PowerUp {
 
     public override void OnCollect(Snake snake) {
         snake.SetInvincible();
-        this.snake = snake;
-        Invoke(nameof(PowerUp), 3);
     }
 
-    public void PowerUp(){
-        snake.SetInvincible();
-    }
 }

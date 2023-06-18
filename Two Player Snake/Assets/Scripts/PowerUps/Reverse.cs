@@ -7,26 +7,17 @@ public class Reverse : PowerUp {
     private Snake snake;
 
     public override void OnCollect(Snake snake) {
-        red = Map.instance.redSnake;
-        blue = Map.instance.blueSnake;
+        red = GameObject.Find("Red Snake(Clone)").GetComponent<Snake>();
+        blue = GameObject.Find("Blue Snake(Clone)").GetComponent<Snake>();
         this.snake = snake;
         if(Random.Range(0, 99)>24){
-            if(snake.Equals(red)){
+            if(snake ==red){
                 blue.reverseControls();
-                snake = blue;
-                Invoke(nameof(PowerUp), 3);
             }else{
                 red.reverseControls();
-                snake = red;
-                Invoke(nameof(PowerUp), 3);
             }
         }else{
             snake.reverseControls();
-            Invoke(nameof(PowerUp), 3);
         }
-    }
-
-    public void PowerUp(){
-        snake.reverseControls();
     }
 }

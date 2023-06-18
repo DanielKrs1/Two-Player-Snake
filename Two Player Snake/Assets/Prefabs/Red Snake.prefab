@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red Snake
       objectReference: {fileID: 0}
+    - target: {fileID: 5392253634089983788, guid: 4b8666c9ccde6ff4599923523ca0af5a,
+        type: 3}
+      propertyPath: m_TagString
+      value: RedSnake
+      objectReference: {fileID: 0}
     - target: {fileID: 5392253634089983789, guid: 4b8666c9ccde6ff4599923523ca0af5a,
         type: 3}
       propertyPath: bodySegment
