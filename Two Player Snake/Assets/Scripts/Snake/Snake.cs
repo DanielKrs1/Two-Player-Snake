@@ -101,6 +101,7 @@ public class Snake : MonoBehaviour {
             if (segmentsLeftToGrow > 0) {
                 segmentsLeftToGrow--;
                 BodySegment newSegment = Instantiate(bodySegment, new Vector3(oldHeadPosition.x, oldHeadPosition.y), Quaternion.identity);
+                newSegment.gameObject.GetComponent<SpriteRenderer>().color = currentColor;
                 body.Insert(0, newSegment);
             } else {
                 Vector3 oldPosition = oldHeadPosition;
