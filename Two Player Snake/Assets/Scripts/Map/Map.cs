@@ -58,4 +58,8 @@ public class Map : MonoBehaviour {
         int height = (size.y - 1) / 2;
         return new Vector2Int(Random.Range(-width, width + 1), Random.Range(-height, height + 1));
     }
+
+    private void Update() {
+        Physics2D.Simulate(Time.deltaTime);
+    }
 }
