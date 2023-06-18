@@ -29,7 +29,7 @@ public class Map : MonoBehaviour {
         sp1.size = new Vector2(size.x, size.y);
         mainCamera.orthographicSize = size.y/2 + 1;
 
-        Instantiate(redSnake, new Vector3(redSnakeSpawn.x, redSnakeSpawn.y), Quaternion.identity);
+        //Instantiate(redSnake, new Vector3(redSnakeSpawn.x, redSnakeSpawn.y), Quaternion.identity);
         Instantiate(blueSnake, new Vector3(blueSnakeSpawn.x, blueSnakeSpawn.y), Quaternion.identity);
         Instantiate(gameCanvas);
         app.SpawnNewPowerUp();
