@@ -167,9 +167,9 @@ MonoBehaviour:
   powerUpCount: 0
   maxPowerUps: 0
   spawnChance: 0
-  size: {x: 63, y: 63}
-  redSnakeSpawn: {x: -25, y: -25}
-  blueSnakeSpawn: {x: 25, y: 25}
+  size: {x: 21, y: 21}
+  redSnakeSpawn: {x: -10, y: -10}
+  blueSnakeSpawn: {x: 10, y: 10}
 --- !u!4 &532824485
 Transform:
   m_ObjectHideFlags: 0
