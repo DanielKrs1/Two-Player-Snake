@@ -26,6 +26,10 @@ public class Snake : MonoBehaviour {
     private bool invincible = false;
     private bool frozen = false;
 
+    private int freezeStack;
+    private int invincibleStack;
+    private int reverseStack;
+
     //body
     private readonly List<BodySegment> body = new List<BodySegment>();
     private int segmentsLeftToGrow;
@@ -140,7 +144,8 @@ public class Snake : MonoBehaviour {
     public void Teleport(){
         Vector2 teleportLocation = Map.instance.GetRandomPosition();
 
-        while (Physics2D.OverlapPoint(teleportLocation) != null) {
+        while (Physics2D.OverlapPoint(teleportLocation) != null) 
+        {
             teleportLocation = Map.instance.GetRandomPosition();
         }
 
@@ -151,18 +156,26 @@ public class Snake : MonoBehaviour {
         frozen = true;
         currentColor.b+=0.75f;
         currentColor.g+=0.75f;
-        spriteRenderer.color = currentColor;
-        foreach (BodySegment bodySegment in body) {
-            bodySegment.gameObject.GetComponent<SpriteRenderer>().color = currentColor;
+        freezeStack++;
+        if(freezeStack==1){
+            spriteRenderer.color = currentColor;
+            foreach (BodySegment bodySegment in body) 
+            {
+                bodySegment.gameObject.GetComponent<SpriteRenderer>().color = currentColor;
+            }
         }
         StartCoroutine(UnFreeze());
     }
 
     public IEnumerator UnFreeze(){
         yield return new WaitForSeconds(1.5f);
-        currentColor.b-=0.75f;
-        currentColor.g-=0.75f;
-        frozen = false;
+        freezeStack--;
+        if(freezeStack==0)
+        {
+            currentColor.b-=0.75f;
+            currentColor.g-=0.75f;
+            frozen = false;
+        }
     }
 
     public void SpeedIncrease(float speed){
@@ -182,57 +195,71 @@ public class Snake : MonoBehaviour {
 
     public void SetInvincible(){
         invincible = true;
-        currentColor.g+=0.45f;
-        currentColor.r+=0.45f;
+        invincibleStack++;
+        if(invincibleStack==1){
+            currentColor.g+=0.45f;
+            currentColor.r+=0.45f;
+        }
         StartCoroutine(StopInvincible());
     }
 
     public IEnumerator StopInvincible(){
         yield return new WaitForSeconds(4.0f);
-        currentColor.g-=0.45f;
-        currentColor.r-=0.45f;
-        invincible = false;
+        invincibleStack--;
+        if(invincibleStack==0)
+        {
+            currentColor.g-=0.45f;
+            currentColor.r-=0.45f;
+            invincible = false;
+        }
     }
 
     public void ReverseControls() {
         keyBuffer.Clear();
-
-        switch (controlType) {
-            case ControlType.WASD:
-                upKey = KeyCode.S;
-                downKey = KeyCode.W;
-                leftKey = KeyCode.D;
-                rightKey = KeyCode.A;
-                break;
-            case ControlType.ArrowKeys:
-                upKey = KeyCode.DownArrow;
-                downKey = KeyCode.UpArrow;
-                leftKey = KeyCode.RightArrow;
-                rightKey = KeyCode.LeftArrow;
-                break;
-        }        
-        currentColor.g+=0.6f;
-        currentColor.r+=0.75f;
+        
+        reverseStack++;
+        if(reverseStack==1){  
+            switch (controlType) {
+                case ControlType.WASD:
+                    upKey = KeyCode.S;
+                    downKey = KeyCode.W;
+                    leftKey = KeyCode.D;
+                    rightKey = KeyCode.A;
+                    break;
+                case ControlType.ArrowKeys:
+                    upKey = KeyCode.DownArrow;
+                    downKey = KeyCode.UpArrow;
+                    leftKey = KeyCode.RightArrow;
+                    rightKey = KeyCode.LeftArrow;
+                    break;
+            }      
+            currentColor.g+=0.6f;
+            currentColor.r+=0.75f;
+        }
         StartCoroutine(UnReverse());
     }
 
     public IEnumerator UnReverse(){
         yield return new WaitForSeconds(3.0f);
-        currentColor.g-=0.6f;
-        currentColor.r-=0.75f;
-        switch (controlType) {
-            case ControlType.WASD:
-                upKey = KeyCode.W;
-                downKey = KeyCode.S;
-                leftKey = KeyCode.A;
-                rightKey = KeyCode.D;
-                break;
-            case ControlType.ArrowKeys:
-                upKey = KeyCode.UpArrow;
-                downKey = KeyCode.DownArrow;
-                leftKey = KeyCode.LeftArrow;
-                rightKey = KeyCode.RightArrow;
-                break;
+        reverseStack--;
+        if(reverseStack==0){
+            currentColor.g-=0.6f;
+            currentColor.r-=0.75f;
+            switch (controlType) 
+            {
+                case ControlType.WASD:
+                    upKey = KeyCode.W;
+                    downKey = KeyCode.S;
+                    leftKey = KeyCode.A;
+                    rightKey = KeyCode.D;
+                    break;
+                case ControlType.ArrowKeys:
+                    upKey = KeyCode.UpArrow;
+                    downKey = KeyCode.DownArrow;
+                    leftKey = KeyCode.LeftArrow;
+                    rightKey = KeyCode.RightArrow;
+                    break;
+            }
         }
     }
 }
