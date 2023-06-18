@@ -68,8 +68,8 @@ public class Snake : MonoBehaviour {
             moveTimer += Time.deltaTime;
         }
 
-        if (moveTimer >= moveInterval/speed&&!frozen) {
-            moveTimer -= moveInterval/speed;
+        if (moveTimer >= moveInterval / speed && !frozen) {
+            moveTimer -= moveInterval / speed;
             Vector3 oldHeadPosition = transform.position;
             transform.position += new Vector3(direction.x, direction.y);
             canChangeDirection = true;
@@ -87,6 +87,14 @@ public class Snake : MonoBehaviour {
                     oldPosition = olderPosition;
                 }
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.GetComponent<BodySegment>()) {
+            EndScreen.instance.GameOver(this);
+        } else if (collision.GetComponent<Snake>()) {
+            EndScreen.instance.GameOver(null);
         }
     }
 

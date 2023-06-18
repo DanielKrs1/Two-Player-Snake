@@ -27,12 +27,12 @@ public class Map : MonoBehaviour {
         GameObject newTile = Instantiate(Resources.Load("Square") as GameObject, new Vector3(0, 0), Quaternion.identity);
         SpriteRenderer sp1 = newTile.GetComponent<SpriteRenderer>() as SpriteRenderer;
         sp1.size = new Vector2(size.x, size.y);
-        //mainCamera.orthographicSize = newTile.transform.localScale.y / 2 + 1;
-        mainCamera.orthographicSize = size.y/2;
+        mainCamera.orthographicSize = size.y/2 + 1;
 
         Instantiate(redSnake, new Vector3(redSnakeSpawn.x, redSnakeSpawn.y), Quaternion.identity);
         Instantiate(blueSnake, new Vector3(blueSnakeSpawn.x, blueSnakeSpawn.y), Quaternion.identity);
         Instantiate(gameCanvas);
+        app.SpawnNewPowerUp();
         app.SpawnNewPowerUp();
     }
 
@@ -57,5 +57,9 @@ public class Map : MonoBehaviour {
         int width = (size.x - 1) / 2;
         int height = (size.y - 1) / 2;
         return new Vector2Int(Random.Range(-width, width + 1), Random.Range(-height, height + 1));
+    }
+
+    private void Update() {
+        Physics2D.Simulate(Time.deltaTime);
     }
 }
