@@ -26,14 +26,13 @@ public class EndScreen : MonoBehaviour {
             return;
 
         if (deadSnakes.Count == 1) {
-            Debug.Log(deadSnakes[0].gameObject.name);
             if (deadSnakes[0].gameObject.name.ToLower().Contains("red"))
             {
                 winnerText.text = "Blue won!";
             }
             else
             {
-                winnerText.text = "Red won";
+                winnerText.text = "Red won!";
             }
         } else {
             winnerText.text = "Tie";
