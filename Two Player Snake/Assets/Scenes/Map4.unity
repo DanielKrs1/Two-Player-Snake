@@ -156,22 +156,22 @@ PrefabInstance:
     - target: {fileID: 242074970470723870, guid: c048100ec1119854aa481ab56151198c,
         type: 3}
       propertyPath: redSnakeSpawn.x
-      value: -4
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 242074970470723870, guid: c048100ec1119854aa481ab56151198c,
         type: 3}
       propertyPath: redSnakeSpawn.y
-      value: -4
+      value: -6
       objectReference: {fileID: 0}
     - target: {fileID: 242074970470723870, guid: c048100ec1119854aa481ab56151198c,
         type: 3}
       propertyPath: blueSnakeSpawn.x
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 242074970470723870, guid: c048100ec1119854aa481ab56151198c,
         type: 3}
       propertyPath: blueSnakeSpawn.y
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 242074970470723871, guid: c048100ec1119854aa481ab56151198c,
         type: 3}
