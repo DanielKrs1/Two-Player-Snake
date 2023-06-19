@@ -23,7 +23,7 @@ public class Snake : MonoBehaviour {
     private Color normalColor;
     private Color currentColor;
 
-    private bool invincible = false;
+    public bool invincible = false;
     private bool frozen = false;
 
     private int freezeStack;
@@ -130,10 +130,19 @@ public class Snake : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+       
         if (collision.GetComponent<BodySegment>()&&!invincible) {
             EndScreen.instance.GameOver(this);
-        } else if (collision.GetComponent<Snake>()&&!invincible) {
-            EndScreen.instance.GameOver(null);
+        }else if (collision.tag == "Wall")
+        {
+            EndScreen.instance.GameOver(this);
+        }
+        else if (collision.GetComponent<Snake>()&&!invincible) {
+            if(collision.GetComponent<Snake>().invincible){
+                EndScreen.instance.GameOver(this);
+            }else{
+                EndScreen.instance.GameOver(null);
+            }
         }
     }
 
