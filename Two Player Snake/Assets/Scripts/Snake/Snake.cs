@@ -166,6 +166,7 @@ public class Snake : MonoBehaviour {
         currentColor.b+=0.75f;
         currentColor.g+=0.75f;
         freezeStack++;
+        keyBuffer.Clear();
         if(freezeStack==1){
             spriteRenderer.color = currentColor;
             foreach (BodySegment bodySegment in body) 
@@ -177,7 +178,7 @@ public class Snake : MonoBehaviour {
     }
 
     public IEnumerator UnFreeze(){
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         freezeStack--;
         if(freezeStack==0)
         {
