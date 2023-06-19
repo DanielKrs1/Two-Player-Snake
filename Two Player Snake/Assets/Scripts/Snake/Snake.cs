@@ -130,9 +130,14 @@ public class Snake : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
+       
         if (collision.GetComponent<BodySegment>()&&!invincible) {
             EndScreen.instance.GameOver(this);
-        } else if (collision.GetComponent<Snake>()&&!invincible) {
+        }else if (collision.tag == "Wall")
+        {
+            EndScreen.instance.GameOver(this);
+        }
+        else if (collision.GetComponent<Snake>()&&!invincible) {
             EndScreen.instance.GameOver(null);
         }
     }
