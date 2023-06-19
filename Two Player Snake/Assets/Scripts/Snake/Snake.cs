@@ -23,7 +23,7 @@ public class Snake : MonoBehaviour {
     private Color normalColor;
     private Color currentColor;
 
-    private bool invincible = false;
+    public bool invincible = false;
     private bool frozen = false;
 
     private int freezeStack;
@@ -138,7 +138,11 @@ public class Snake : MonoBehaviour {
             EndScreen.instance.GameOver(this);
         }
         else if (collision.GetComponent<Snake>()&&!invincible) {
-            EndScreen.instance.GameOver(null);
+            if(collision.GetComponent<Snake>().invincible){
+                EndScreen.instance.GameOver(this);
+            }else{
+                EndScreen.instance.GameOver(null);
+            }
         }
     }
 
