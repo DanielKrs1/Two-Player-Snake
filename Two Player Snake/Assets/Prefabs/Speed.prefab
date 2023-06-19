@@ -145,4 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 7598496047794381723}
-  speedIncrease: 0.2
+  speedIncrease: 0.15

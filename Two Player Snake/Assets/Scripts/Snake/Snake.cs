@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class Snake : MonoBehaviour {
     [SerializeField] private BodySegment bodySegment;
@@ -204,7 +204,7 @@ public class Snake : MonoBehaviour {
     }
 
     public IEnumerator StopInvincible(){
-        yield return new WaitForSeconds(4.0f);
+        yield return new WaitForSeconds(3.0f);
         invincibleStack--;
         if(invincibleStack==0)
         {
