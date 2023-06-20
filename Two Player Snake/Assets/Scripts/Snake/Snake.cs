@@ -179,6 +179,7 @@ public class Snake : MonoBehaviour {
 
     public IEnumerator UnFreeze(){
         yield return new WaitForSeconds(2f);
+        keyBuffer.Clear();
         freezeStack--;
         if(freezeStack==0)
         {
@@ -253,6 +254,7 @@ public class Snake : MonoBehaviour {
         yield return new WaitForSeconds(3.0f);
         reverseStack--;
         if(reverseStack==0){
+            keyBuffer.Clear();
             currentColor.g-=0.6f;
             currentColor.r-=0.75f;
             switch (controlType) 
